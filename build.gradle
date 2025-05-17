@@ -18,10 +18,21 @@ repositories {
 	mavenCentral()
 }
 
+def awsJavaSdkVersion = '1.12.780'
+def cucumberVersion = '7.18.1'
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	implementation(group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: awsJavaSdkVersion)
+	implementation(group: 'com.amazonaws', name: 'aws-java-sdk-core', version: awsJavaSdkVersion)
+
+	implementation group: 'io.cucumber', name: 'cucumber-java', version: cucumberVersion
+	testImplementation group: 'io.cucumber', name: 'cucumber-java', version: cucumberVersion
+	testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: cucumberVersion
+	testImplementation group: 'io.cucumber', name: 'cucumber-spring', version: cucumberVersion
 }
 
 tasks.named('test') {
