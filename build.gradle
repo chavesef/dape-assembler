@@ -20,6 +20,7 @@ repositories {
 
 def awsJavaSdkVersion = '1.12.780'
 def cucumberVersion = '7.18.1'
+def sparkVersion = '3.5.5'
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
@@ -28,6 +29,9 @@ dependencies {
 
 	implementation(group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: awsJavaSdkVersion)
 	implementation(group: 'com.amazonaws', name: 'aws-java-sdk-core', version: awsJavaSdkVersion)
+
+	implementation group: 'org.apache.spark', name: 'spark-core_2.13', version: sparkVersion
+	implementation group: 'org.apache.spark', name: 'spark-sql_2.13', version: sparkVersion
 
 	implementation group: 'io.cucumber', name: 'cucumber-java', version: cucumberVersion
 	testImplementation group: 'io.cucumber', name: 'cucumber-java', version: cucumberVersion
