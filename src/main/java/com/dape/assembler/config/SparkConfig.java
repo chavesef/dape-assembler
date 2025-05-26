@@ -28,6 +28,7 @@ public class SparkConfig {
         sparkConfWrapper.set("spark.master", true)
                 .set("fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem", true)
                 .set("spark.dynamicAllocation.maxExecutors", "15", true)
+                .set("fs.s3a.change.detection.version.required", "false", false)
                 .set("spark.driver.maxResultSize", true)
                 .set("spark.eventLog.enabled", true)
                 .set("fs.s3a.access.key", true)

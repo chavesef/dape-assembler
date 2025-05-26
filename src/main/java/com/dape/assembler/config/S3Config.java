@@ -20,8 +20,6 @@ public class S3Config {
     }
 
     private AmazonS3 amazonS3Client() {
-        propertyUtils.setProperty("aws.accessKeyId", propertyUtils.getProperty("cloud.aws.credentials.accessKey"));
-        propertyUtils.setProperty("aws.secretKey", propertyUtils.getProperty("cloud.aws.credentials.secretKey"));
 
         return AmazonS3ClientBuilder.standard()
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(propertyUtils.getProperty("cloud.aws.endpoint.static"), propertyUtils.getProperty("cloud.aws.region.static")))
