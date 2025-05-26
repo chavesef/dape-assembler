@@ -1,0 +1,15 @@
+services:
+  localstack:
+    container_name: dape-s3
+    image: localstack/localstack
+    environment:
+      - SERVICES=s3
+      - DEBUG=0
+      - DEFAULT_REGION=us-east-1
+    ports:
+      - "4566:4566"
+    volumes:
+      - ./scripts/files/:/docker-entrypoint-initaws.d/files
+      - ./scripts/initAWS.sh:/docker-entrypoint-initaws.d/make-s3.sh
+      - "${TMPDIR:-/tmp}/localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

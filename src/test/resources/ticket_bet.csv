@@ -1,0 +1,261 @@
+IDT_TICKET_BET,IDT_TICKET,IDT_BET
+1,1,1
+2,1,4
+3,1,6
+4,2,21
+5,3,2
+6,3,18
+7,3,11
+41,41,19
+62,62,1
+63,63,1
+64,63,11
+65,63,21
+21,21,9
+22,21,12
+8,4,9
+9,5,2
+10,5,4
+11,6,4
+12,7,13
+13,7,14
+14,7,15
+15,7,16
+16,8,4
+17,8,13
+18,8,18
+42,42,5
+
+this is the log for the first run, and it runs ok
+22:25:44.700 [Test worker] INFO com.dape.assembler.service.DirectoryManagementService -- m=writeOutputFile, msg=Writing output file to path=s3a://regulatory-dape/output
+22:25:44.866 [s3mock-akka.actor.default-dispatcher-4] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/), delimiter=Some(/)
+22:25:44.919 [Test worker] WARN org.apache.hadoop.fs.s3a.commit.AbstractS3ACommitterFactory -- Using standard FileOutputCommitter to commit work. This is slow and potentially unsafe.
+22:25:44.920 [Test worker] INFO org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter -- File Output Committer Algorithm version is 1
+22:25:44.920 [Test worker] INFO org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter -- FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+22:25:44.921 [Test worker] INFO org.apache.hadoop.fs.s3a.commit.AbstractS3ACommitterFactory -- Using Committer FileOutputCommitter{PathOutputCommitter{context=TaskAttemptContextImpl{JobContextImpl{jobId=job_202505252225441098398318595687728_0000}; taskId=attempt_202505252225441098398318595687728_0000_m_000000_0, status=''}; org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter@6eee3cac}; outputPath=s3a://regulatory-dape/output/tmp_output, workPath=s3a://regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_202505252225441098398318595687728_0000_m_000000_0, algorithmVersion=1, skipCleanup=false, ignoreCleanupFailures=false} for s3a://regulatory-dape/output/tmp_output
+22:25:44.922 [Test worker] INFO org.apache.spark.sql.execution.datasources.SQLHadoopMapReduceCommitProtocol -- Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+22:25:44.929 [s3mock-akka.actor.default-dispatcher-4] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/), delimiter=Some(/)
+22:25:44.942 [s3mock-akka.actor.default-dispatcher-4] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/), delimiter=Some(/)
+22:25:44.955 [s3mock-akka.actor.default-dispatcher-4] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/), delimiter=Some(/)
+22:25:44.968 [s3mock-akka.actor.default-dispatcher-13] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/), delimiter=Some(/)
+22:25:44.986 [s3mock-akka.actor.default-dispatcher-4] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/tmp_output/_temporary/0/ (signed)
+22:25:45.053 [s3mock-akka.actor.default-dispatcher-14] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/
+22:25:45.053 [s3mock-akka.actor.default-dispatcher-14] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:25:45.053 [s3mock-akka.actor.default-dispatcher-14] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:25:45.065 [Test worker] INFO org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator -- Code generated in 3.561438 ms
+22:25:45.188 [Test worker] INFO org.apache.spark.SparkContext -- Starting job: text at DirectoryManagementService.java:56
+22:25:45.189 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Got job 633 (text at DirectoryManagementService.java:56) with 1 output partitions
+22:25:45.190 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Final stage: ResultStage 838 (text at DirectoryManagementService.java:56)
+22:25:45.190 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Parents of final stage: List()
+22:25:45.190 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Missing parents: List()
+22:25:45.191 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Submitting ResultStage 838 (MapPartitionsRDD[2481] at text at DirectoryManagementService.java:56), which has no missing parents
+22:25:45.221 [dag-scheduler-event-loop] INFO org.apache.spark.storage.memory.MemoryStore -- Block broadcast_1271 stored as values in memory (estimated size 218.5 KiB, free 124.8 MiB)
+22:25:45.222 [dag-scheduler-event-loop] INFO org.apache.spark.storage.memory.MemoryStore -- Block broadcast_1271_piece0 stored as bytes in memory (estimated size 75.5 KiB, free 124.7 MiB)
+22:25:45.223 [dispatcher-BlockManagerMaster] INFO org.apache.spark.storage.BlockManagerInfo -- Added broadcast_1271_piece0 in memory on 192.168.3.60:43475 (size: 75.5 KiB, free: 127.0 MiB)
+22:25:45.223 [dag-scheduler-event-loop] INFO org.apache.spark.SparkContext -- Created broadcast 1271 from broadcast at DAGScheduler.scala:1585
+22:25:45.223 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Submitting 1 missing tasks from ResultStage 838 (MapPartitionsRDD[2481] at text at DirectoryManagementService.java:56) (first 15 tasks are for partitions Vector(0))
+22:25:45.223 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.TaskSchedulerImpl -- Adding task set 838.0 with 1 tasks resource profile 0
+22:25:45.227 [dispatcher-event-loop-7] INFO org.apache.spark.scheduler.TaskSetManager -- Starting task 0.0 in stage 838.0 (TID 668) (192.168.3.60, executor driver, partition 0, PROCESS_LOCAL, 13648 bytes)
+22:25:45.227 [Executor task launch worker for task 0.0 in stage 838.0 (TID 668)] INFO org.apache.spark.executor.Executor -- Running task 0.0 in stage 838.0 (TID 668)
+22:25:45.274 [Executor task launch worker for task 0.0 in stage 838.0 (TID 668)] WARN org.apache.hadoop.fs.s3a.commit.AbstractS3ACommitterFactory -- Using standard FileOutputCommitter to commit work. This is slow and potentially unsafe.
+22:25:45.274 [Executor task launch worker for task 0.0 in stage 838.0 (TID 668)] INFO org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter -- File Output Committer Algorithm version is 1
+22:25:45.274 [Executor task launch worker for task 0.0 in stage 838.0 (TID 668)] INFO org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter -- FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+22:25:45.275 [Executor task launch worker for task 0.0 in stage 838.0 (TID 668)] INFO org.apache.hadoop.fs.s3a.commit.AbstractS3ACommitterFactory -- Using Committer FileOutputCommitter{PathOutputCommitter{context=TaskAttemptContextImpl{JobContextImpl{jobId=job_20250525222545481413127609210475_0838}; taskId=attempt_20250525222545481413127609210475_0838_m_000000_668, status=''}; org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter@671e2353}; outputPath=s3a://regulatory-dape/output/tmp_output, workPath=s3a://regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_20250525222545481413127609210475_0838_m_000000_668, algorithmVersion=1, skipCleanup=false, ignoreCleanupFailures=false} for s3a://regulatory-dape/output/tmp_output
+22:25:45.275 [Executor task launch worker for task 0.0 in stage 838.0 (TID 668)] INFO org.apache.spark.sql.execution.datasources.SQLHadoopMapReduceCommitProtocol -- Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+22:25:45.299 [s3mock-akka.actor.default-dispatcher-18] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/attempt_20250525222545481413127609210475_0838_m_000000_668/part-00000-634be9d4-ccd2-4857-ba11-23e531615f7d-c000.txt/), delimiter=Some(/)
+22:25:45.394 [s3mock-akka.actor.default-dispatcher-18] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_20250525222545481413127609210475_0838_m_000000_668/part-00000-634be9d4-ccd2-4857-ba11-23e531615f7d-c000.txt (signed)
+22:25:45.405 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_20250525222545481413127609210475_0838_m_000000_668/
+22:25:45.406 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/_temporary/
+22:25:45.407 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/
+22:25:45.407 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/
+22:25:45.407 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:25:45.407 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:25:45.431 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/attempt_20250525222545481413127609210475_0838_m_000000_668/), delimiter=Some(/)
+22:25:45.448 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/attempt_20250525222545481413127609210475_0838_m_000000_668/), delimiter=Some(/)
+22:25:45.460 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/task_20250525222545481413127609210475_0838_m_000000/), delimiter=Some(/)
+22:25:45.471 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/attempt_20250525222545481413127609210475_0838_m_000000_668/), delimiter=Some(/)
+22:25:45.481 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/task_20250525222545481413127609210475_0838_m_000000/), delimiter=Some(/)
+22:25:45.500 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/attempt_20250525222545481413127609210475_0838_m_000000_668/), delimiter=None
+22:25:45.553 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.CopyObject -- copied object regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_20250525222545481413127609210475_0838_m_000000_668/part-00000-634be9d4-ccd2-4857-ba11-23e531615f7d-c000.txt
+22:25:45.561 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_20250525222545481413127609210475_0838_m_000000_668/part-00000-634be9d4-ccd2-4857-ba11-23e531615f7d-c000.txt
+22:25:45.571 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/
+22:25:45.571 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/
+22:25:45.571 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:25:45.571 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:25:45.578 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/), delimiter=Some(/)
+22:25:45.584 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/tmp_output/_temporary/0/_temporary/ (signed)
+22:25:45.596 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/
+22:25:45.596 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/
+22:25:45.596 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:25:45.596 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:25:45.599 [Executor task launch worker for task 0.0 in stage 838.0 (TID 668)] INFO org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter -- Saved output of task 'attempt_20250525222545481413127609210475_0838_m_000000_668' to s3a://regulatory-dape/output/tmp_output/_temporary/0/task_20250525222545481413127609210475_0838_m_000000
+22:25:45.600 [Executor task launch worker for task 0.0 in stage 838.0 (TID 668)] INFO org.apache.spark.mapred.SparkHadoopMapRedUtil -- attempt_20250525222545481413127609210475_0838_m_000000_668: Committed. Elapsed time: 159 ms.
+22:25:45.609 [Executor task launch worker for task 0.0 in stage 838.0 (TID 668)] INFO org.apache.spark.executor.Executor -- Finished task 0.0 in stage 838.0 (TID 668). 4634 bytes result sent to driver
+22:25:45.610 [task-result-getter-1] INFO org.apache.spark.scheduler.TaskSetManager -- Finished task 0.0 in stage 838.0 (TID 668) in 386 ms on 192.168.3.60 (executor driver) (1/1)
+22:25:45.611 [task-result-getter-1] INFO org.apache.spark.scheduler.TaskSchedulerImpl -- Removed TaskSet 838.0, whose tasks have all completed, from pool
+22:25:45.613 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- ResultStage 838 (text at DirectoryManagementService.java:56) finished in 0.421 s
+22:25:45.614 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Job 633 is finished. Cancelling potential speculative or zombie tasks for this job
+22:25:45.614 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.TaskSchedulerImpl -- Killing all running tasks in stage 838: Stage finished
+22:25:45.615 [Test worker] INFO org.apache.spark.scheduler.DAGScheduler -- Job 633 finished: text at DirectoryManagementService.java:56, took 0.426781 s
+22:25:45.616 [Test worker] INFO org.apache.spark.sql.execution.datasources.FileFormatWriter -- Start to commit write Job 2ee77fd0-badf-4668-a4ad-dfabce7528ee.
+22:25:45.623 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/), delimiter=Some(/)
+22:25:45.637 [s3mock-akka.actor.default-dispatcher-10] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/), delimiter=Some(/)
+22:25:45.646 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/task_20250525222545481413127609210475_0838_m_000000/), delimiter=Some(/)
+22:25:45.660 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/part-00000-634be9d4-ccd2-4857-ba11-23e531615f7d-c000.txt/), delimiter=Some(/)
+22:25:45.678 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/part-00000-634be9d4-ccd2-4857-ba11-23e531615f7d-c000.txt/), delimiter=Some(/)
+22:25:45.701 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.CopyObject -- copied object regulatory-dape/output/tmp_output/_temporary/0/task_20250525222545481413127609210475_0838_m_000000/part-00000-634be9d4-ccd2-4857-ba11-23e531615f7d-c000.txt
+22:25:45.709 [s3mock-akka.actor.default-dispatcher-10] INFO io.findify.s3mock.route.DeleteObject -- deleted object regulatory-dape/output/tmp_output/_temporary/0/task_20250525222545481413127609210475_0838_m_000000/part-00000-634be9d4-ccd2-4857-ba11-23e531615f7d-c000.txt
+22:25:45.716 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:25:45.717 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:25:45.723 [s3mock-akka.actor.default-dispatcher-10] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/task_20250525222545481413127609210475_0838_m_000000/), delimiter=Some(/)
+22:25:45.729 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/tmp_output/_temporary/0/task_20250525222545481413127609210475_0838_m_000000/ (signed)
+22:25:45.738 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/
+22:25:45.738 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/
+22:25:45.738 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:25:45.738 [s3mock-akka.actor.default-dispatcher-3] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:25:45.752 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/), delimiter=Some(/)
+22:25:45.759 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/), delimiter=None
+22:25:45.770 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/_temporary/
+22:25:45.774 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/task_20250525222545481413127609210475_0838_m_000000/
+22:25:45.779 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/), delimiter=Some(/)
+22:25:45.786 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_SUCCESS/), delimiter=Some(/)
+22:25:45.795 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/tmp_output/_SUCCESS (signed)
+22:25:45.807 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:25:45.807 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:25:45.824 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/.spark-staging-634be9d4-ccd2-4857-ba11-23e531615f7d/), delimiter=Some(/)
+22:25:45.828 [Test worker] INFO org.apache.spark.sql.execution.datasources.FileFormatWriter -- Write Job 2ee77fd0-badf-4668-a4ad-dfabce7528ee committed. Elapsed time: 210 ms.
+22:25:45.831 [Test worker] INFO org.apache.spark.sql.execution.datasources.FileFormatWriter -- Finished processing stats for write job 2ee77fd0-badf-4668-a4ad-dfabce7528ee.
+22:25:55.834 [Test worker] INFO com.dape.assembler.service.DirectoryManagementService -- m=compressS3OutputFile, msg=Renaming output file
+22:25:55.873 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output), delimiter=None
+S3ObjectSummary{bucketName='regulatory-dape', key='output/tmp_output/_SUCCESS', eTag='d41d8cd98f00b204e9800998ecf8427e', size=0, lastModified=Sun May 25 22:25:45 BRT 2025, storageClass='STANDARD', owner=null', restoreStatus=null}
+S3ObjectSummary{bucketName='regulatory-dape', key='output/tmp_output/part-00000-634be9d4-ccd2-4857-ba11-23e531615f7d-c000.txt', eTag='21583fbed78aacb783651ac617d9636a', size=888, lastModified=Sun May 25 22:25:45 BRT 2025, storageClass='STANDARD', owner=null', restoreStatus=null}
+22:25:55.878 [Test worker] INFO com.dape.assembler.service.DirectoryManagementService -- m=getTxtFileInObjectList, msg=Searching for generated file in output files
+22:25:55.909 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.DeleteObject -- deleted object regulatory-dape/output/tmp_output/_SUCCESS
+22:25:55.912 [s3mock-akka.actor.default-dispatcher-10] INFO io.findify.s3mock.route.DeleteObject -- deleted object regulatory-dape/output/tmp_output/part-00000-634be9d4-ccd2-4857-ba11-23e531615f7d-c000.txt
+22:25:55.915 [s3mock-akka.actor.default-dispatcher-10] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/dape_generated.txt (signed)
+22:25:55.919 [Test worker] INFO org.apache.spark.SparkContext -- SparkContext is stopping with exitCode 0.
+22:25:55.933 [dispatcher-event-loop-5] INFO org.apache.spark.MapOutputTrackerMasterEndpoint -- MapOutputTrackerMasterEndpoint stopped!
+22:25:55.951 [Test worker] INFO org.apache.spark.storage.memory.MemoryStore -- MemoryStore cleared
+22:25:55.951 [Test worker] INFO org.apache.spark.storage.BlockManager -- BlockManager stopped
+22:25:55.956 [Test worker] INFO org.apache.spark.storage.BlockManagerMaster -- BlockManagerMaster stopped
+22:25:55.963 [dispatcher-event-loop-4] INFO org.apache.spark.scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint -- OutputCommitCoordinator stopped!
+22:25:55.971 [Test worker] INFO org.apache.spark.SparkContext -- Successfully stopped SparkContext
+22:25:55.971 [Test worker] INFO com.dape.assembler.DapeAssemblerApplication -- m=run msg=Finished Dape Assembler
+
+the log for the second run that fails in the sequence:
+22:26:00.908 [Test worker] INFO com.dape.assembler.service.DirectoryManagementService -- m=writeOutputFile, msg=Writing output file to path=s3a://regulatory-dape/output
+22:26:00.927 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/), delimiter=Some(/)
+22:26:00.931 [Test worker] WARN org.apache.hadoop.fs.s3a.commit.AbstractS3ACommitterFactory -- Using standard FileOutputCommitter to commit work. This is slow and potentially unsafe.
+22:26:00.932 [Test worker] INFO org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter -- File Output Committer Algorithm version is 1
+22:26:00.932 [Test worker] INFO org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter -- FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+22:26:00.932 [Test worker] INFO org.apache.hadoop.fs.s3a.commit.AbstractS3ACommitterFactory -- Using Committer FileOutputCommitter{PathOutputCommitter{context=TaskAttemptContextImpl{JobContextImpl{jobId=job_202505252226008014059195343517692_0000}; taskId=attempt_202505252226008014059195343517692_0000_m_000000_0, status=''}; org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter@4791134b}; outputPath=s3a://regulatory-dape/output/tmp_output, workPath=s3a://regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_202505252226008014059195343517692_0000_m_000000_0, algorithmVersion=1, skipCleanup=false, ignoreCleanupFailures=false} for s3a://regulatory-dape/output/tmp_output
+22:26:00.932 [Test worker] INFO org.apache.spark.sql.execution.datasources.SQLHadoopMapReduceCommitProtocol -- Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+22:26:00.934 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/), delimiter=Some(/)
+22:26:00.942 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/), delimiter=Some(/)
+22:26:00.950 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/), delimiter=Some(/)
+22:26:00.958 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/), delimiter=Some(/)
+22:26:00.965 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/tmp_output/_temporary/0/ (signed)
+22:26:00.972 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/
+22:26:00.972 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:26:00.972 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:26:00.986 [Test worker] INFO org.apache.spark.SparkContext -- Starting job: text at DirectoryManagementService.java:56
+22:26:00.986 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Got job 84 (text at DirectoryManagementService.java:56) with 1 output partitions
+22:26:00.986 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Final stage: ResultStage 109 (text at DirectoryManagementService.java:56)
+22:26:00.986 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Parents of final stage: List()
+22:26:00.986 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Missing parents: List()
+22:26:00.986 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Submitting ResultStage 109 (MapPartitionsRDD[336] at text at DirectoryManagementService.java:56), which has no missing parents
+22:26:01.002 [dag-scheduler-event-loop] INFO org.apache.spark.storage.memory.MemoryStore -- Block broadcast_167 stored as values in memory (estimated size 207.7 KiB, free 127.0 MiB)
+22:26:01.003 [dag-scheduler-event-loop] INFO org.apache.spark.storage.memory.MemoryStore -- Block broadcast_167_piece0 stored as bytes in memory (estimated size 74.1 KiB, free 126.9 MiB)
+22:26:01.003 [dispatcher-BlockManagerMaster] INFO org.apache.spark.storage.BlockManagerInfo -- Added broadcast_167_piece0 in memory on 192.168.3.60:44523 (size: 74.1 KiB, free: 127.1 MiB)
+22:26:01.004 [dag-scheduler-event-loop] INFO org.apache.spark.SparkContext -- Created broadcast 167 from broadcast at DAGScheduler.scala:1585
+22:26:01.004 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Submitting 1 missing tasks from ResultStage 109 (MapPartitionsRDD[336] at text at DirectoryManagementService.java:56) (first 15 tasks are for partitions Vector(0))
+22:26:01.004 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.TaskSchedulerImpl -- Adding task set 109.0 with 1 tasks resource profile 0
+22:26:01.004 [dispatcher-event-loop-7] INFO org.apache.spark.scheduler.TaskSetManager -- Starting task 0.0 in stage 109.0 (TID 87) (192.168.3.60, executor driver, partition 0, PROCESS_LOCAL, 9984 bytes)
+22:26:01.005 [Executor task launch worker for task 0.0 in stage 109.0 (TID 87)] INFO org.apache.spark.executor.Executor -- Running task 0.0 in stage 109.0 (TID 87)
+22:26:01.016 [Executor task launch worker for task 0.0 in stage 109.0 (TID 87)] WARN org.apache.hadoop.fs.s3a.commit.AbstractS3ACommitterFactory -- Using standard FileOutputCommitter to commit work. This is slow and potentially unsafe.
+22:26:01.016 [Executor task launch worker for task 0.0 in stage 109.0 (TID 87)] INFO org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter -- File Output Committer Algorithm version is 1
+22:26:01.016 [Executor task launch worker for task 0.0 in stage 109.0 (TID 87)] INFO org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter -- FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+22:26:01.016 [Executor task launch worker for task 0.0 in stage 109.0 (TID 87)] INFO org.apache.hadoop.fs.s3a.commit.AbstractS3ACommitterFactory -- Using Committer FileOutputCommitter{PathOutputCommitter{context=TaskAttemptContextImpl{JobContextImpl{jobId=job_202505252226006347123567306921258_0109}; taskId=attempt_202505252226006347123567306921258_0109_m_000000_87, status=''}; org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter@4f45bed1}; outputPath=s3a://regulatory-dape/output/tmp_output, workPath=s3a://regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_202505252226006347123567306921258_0109_m_000000_87, algorithmVersion=1, skipCleanup=false, ignoreCleanupFailures=false} for s3a://regulatory-dape/output/tmp_output
+22:26:01.016 [Executor task launch worker for task 0.0 in stage 109.0 (TID 87)] INFO org.apache.spark.sql.execution.datasources.SQLHadoopMapReduceCommitProtocol -- Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+22:26:01.023 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/attempt_202505252226006347123567306921258_0109_m_000000_87/part-00000-f081913c-6762-426e-811a-2f14e4841a78-c000.txt/), delimiter=Some(/)
+22:26:01.030 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_202505252226006347123567306921258_0109_m_000000_87/part-00000-f081913c-6762-426e-811a-2f14e4841a78-c000.txt (signed)
+22:26:01.037 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_202505252226006347123567306921258_0109_m_000000_87/
+22:26:01.037 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/_temporary/
+22:26:01.037 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/
+22:26:01.037 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/
+22:26:01.037 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:26:01.037 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:26:01.053 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/attempt_202505252226006347123567306921258_0109_m_000000_87/), delimiter=Some(/)
+22:26:01.064 [s3mock-akka.actor.default-dispatcher-8] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/attempt_202505252226006347123567306921258_0109_m_000000_87/), delimiter=Some(/)
+22:26:01.074 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/task_202505252226006347123567306921258_0109_m_000000/), delimiter=Some(/)
+22:26:01.082 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/attempt_202505252226006347123567306921258_0109_m_000000_87/), delimiter=Some(/)
+22:26:01.089 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/task_202505252226006347123567306921258_0109_m_000000/), delimiter=Some(/)
+22:26:01.098 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/attempt_202505252226006347123567306921258_0109_m_000000_87/), delimiter=None
+22:26:01.111 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.CopyObject -- copied object regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_202505252226006347123567306921258_0109_m_000000_87/part-00000-f081913c-6762-426e-811a-2f14e4841a78-c000.txt
+22:26:01.116 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/_temporary/attempt_202505252226006347123567306921258_0109_m_000000_87/part-00000-f081913c-6762-426e-811a-2f14e4841a78-c000.txt
+22:26:01.122 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/
+22:26:01.122 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/
+22:26:01.122 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:26:01.122 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:26:01.128 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/_temporary/), delimiter=Some(/)
+22:26:01.134 [s3mock-akka.actor.default-dispatcher-11] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/tmp_output/_temporary/0/_temporary/ (signed)
+22:26:01.141 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/
+22:26:01.141 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/
+22:26:01.141 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:26:01.141 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:26:01.143 [Executor task launch worker for task 0.0 in stage 109.0 (TID 87)] INFO org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter -- Saved output of task 'attempt_202505252226006347123567306921258_0109_m_000000_87' to s3a://regulatory-dape/output/tmp_output/_temporary/0/task_202505252226006347123567306921258_0109_m_000000
+22:26:01.144 [Executor task launch worker for task 0.0 in stage 109.0 (TID 87)] INFO org.apache.spark.mapred.SparkHadoopMapRedUtil -- attempt_202505252226006347123567306921258_0109_m_000000_87: Committed. Elapsed time: 86 ms.
+22:26:01.144 [Executor task launch worker for task 0.0 in stage 109.0 (TID 87)] INFO org.apache.spark.executor.Executor -- Finished task 0.0 in stage 109.0 (TID 87). 2799 bytes result sent to driver
+22:26:01.145 [task-result-getter-3] INFO org.apache.spark.scheduler.TaskSetManager -- Finished task 0.0 in stage 109.0 (TID 87) in 141 ms on 192.168.3.60 (executor driver) (1/1)
+22:26:01.146 [task-result-getter-3] INFO org.apache.spark.scheduler.TaskSchedulerImpl -- Removed TaskSet 109.0, whose tasks have all completed, from pool
+22:26:01.146 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- ResultStage 109 (text at DirectoryManagementService.java:56) finished in 0.159 s
+22:26:01.146 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.DAGScheduler -- Job 84 is finished. Cancelling potential speculative or zombie tasks for this job
+22:26:01.146 [dag-scheduler-event-loop] INFO org.apache.spark.scheduler.TaskSchedulerImpl -- Killing all running tasks in stage 109: Stage finished
+22:26:01.146 [Test worker] INFO org.apache.spark.scheduler.DAGScheduler -- Job 84 finished: text at DirectoryManagementService.java:56, took 0.160419 s
+22:26:01.146 [Test worker] INFO org.apache.spark.sql.execution.datasources.FileFormatWriter -- Start to commit write Job db233ad6-ec61-4fc2-b89a-9fd67d365e3f.
+22:26:01.150 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/), delimiter=Some(/)
+22:26:01.159 [s3mock-akka.actor.default-dispatcher-12] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/), delimiter=Some(/)
+22:26:01.164 [s3mock-akka.actor.default-dispatcher-12] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/task_202505252226006347123567306921258_0109_m_000000/), delimiter=Some(/)
+22:26:01.173 [s3mock-akka.actor.default-dispatcher-12] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/part-00000-f081913c-6762-426e-811a-2f14e4841a78-c000.txt/), delimiter=Some(/)
+22:26:01.184 [s3mock-akka.actor.default-dispatcher-12] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/part-00000-f081913c-6762-426e-811a-2f14e4841a78-c000.txt/), delimiter=Some(/)
+22:26:01.198 [s3mock-akka.actor.default-dispatcher-12] INFO io.findify.s3mock.route.CopyObject -- copied object regulatory-dape/output/tmp_output/_temporary/0/task_202505252226006347123567306921258_0109_m_000000/part-00000-f081913c-6762-426e-811a-2f14e4841a78-c000.txt
+22:26:01.203 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObject -- deleted object regulatory-dape/output/tmp_output/_temporary/0/task_202505252226006347123567306921258_0109_m_000000/part-00000-f081913c-6762-426e-811a-2f14e4841a78-c000.txt
+22:26:01.206 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:26:01.206 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:26:01.211 [s3mock-akka.actor.default-dispatcher-12] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/0/task_202505252226006347123567306921258_0109_m_000000/), delimiter=Some(/)
+22:26:01.217 [s3mock-akka.actor.default-dispatcher-6] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/tmp_output/_temporary/0/task_202505252226006347123567306921258_0109_m_000000/ (signed)
+22:26:01.224 [s3mock-akka.actor.default-dispatcher-17] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/
+22:26:01.225 [s3mock-akka.actor.default-dispatcher-17] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/
+22:26:01.225 [s3mock-akka.actor.default-dispatcher-17] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:26:01.225 [s3mock-akka.actor.default-dispatcher-17] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:26:01.232 [s3mock-akka.actor.default-dispatcher-17] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/), delimiter=Some(/)
+22:26:01.236 [s3mock-akka.actor.default-dispatcher-18] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_temporary/), delimiter=None
+22:26:01.242 [s3mock-akka.actor.default-dispatcher-17] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/_temporary/
+22:26:01.242 [s3mock-akka.actor.default-dispatcher-17] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/_temporary/0/task_202505252226006347123567306921258_0109_m_000000/
+22:26:01.246 [s3mock-akka.actor.default-dispatcher-18] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/), delimiter=Some(/)
+22:26:01.251 [s3mock-akka.actor.default-dispatcher-17] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/_SUCCESS/), delimiter=Some(/)
+22:26:01.257 [s3mock-akka.actor.default-dispatcher-17] INFO io.findify.s3mock.route.PutObject -- put object regulatory-dape/output/tmp_output/_SUCCESS (signed)
+22:26:01.264 [s3mock-akka.actor.default-dispatcher-18] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/tmp_output/
+22:26:01.264 [s3mock-akka.actor.default-dispatcher-18] INFO io.findify.s3mock.route.DeleteObjects -- deleted object regulatory-dape/output/
+22:26:01.271 [s3mock-akka.actor.default-dispatcher-18] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output/tmp_output/.spark-staging-f081913c-6762-426e-811a-2f14e4841a78/), delimiter=Some(/)
+22:26:01.274 [Test worker] INFO org.apache.spark.sql.execution.datasources.FileFormatWriter -- Write Job db233ad6-ec61-4fc2-b89a-9fd67d365e3f committed. Elapsed time: 127 ms.
+22:26:01.274 [Test worker] INFO org.apache.spark.sql.execution.datasources.FileFormatWriter -- Finished processing stats for write job db233ad6-ec61-4fc2-b89a-9fd67d365e3f.
+22:26:11.274 [Test worker] INFO com.dape.assembler.service.DirectoryManagementService -- m=compressS3OutputFile, msg=Renaming output file
+22:26:11.296 [s3mock-akka.actor.default-dispatcher-7] INFO io.findify.s3mock.route.ListBucket -- listing bucket regulatory-dape with prefix=Some(output), delimiter=None
+22:26:11.303 [Test worker] INFO com.dape.assembler.service.DirectoryManagementService -- m=getTxtFileInObjectList, msg=Searching for generated file in output files
+22:26:11.304 [Test worker] INFO org.apache.spark.SparkContext -- SparkContext is stopping with exitCode 0.
+22:26:11.309 [dispatcher-event-loop-4] INFO org.apache.spark.MapOutputTrackerMasterEndpoint -- MapOutputTrackerMasterEndpoint stopped!
+22:26:11.343 [Test worker] INFO org.apache.spark.storage.memory.MemoryStore -- MemoryStore cleared
+22:26:11.343 [Test worker] INFO org.apache.spark.storage.BlockManager -- BlockManager stopped
+22:26:11.343 [Test worker] INFO org.apache.spark.storage.BlockManagerMaster -- BlockManagerMaster stopped
+22:26:11.343 [dispatcher-event-loop-2] INFO org.apache.spark.scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint -- OutputCommitCoordinator stopped!
+22:26:11.355 [Test worker] INFO org.apache.spark.SparkContext -- Successfully stopped SparkContext
+22:26:11.356 [Test worker] INFO com.dape.assembler.DapeAssemblerApplication -- m=run msg=Finished Dape Assembler
+
+No value present
+com.dape.assembler.exceptions.ProcessingFlowException: No value present
+	at com.dape.assembler.DapeAssemblerApplication.run(DapeAssemblerApplication.java:47)
+	at com.dape.assembler.DapeAssemblerApplication.main(DapeAssemblerApplication.java:23)
+	at com.dape.assembler.cucumber.GenerateDapeSteps.aAplicaçãoForExecutadaComOParâmetro(GenerateDapeSteps.java:106)
+	at ✽.a aplicação for executada com o parâmetro investigationClientIdt "1"(file:///home/echaves1/Documents/Sippar/dape-assembler/src/test/resources/features/generateDape.feature:20)
+

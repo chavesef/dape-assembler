@@ -18,16 +18,44 @@ repositories {
 	mavenCentral()
 }
 
+def awsJavaSdkVersion = '1.12.780'
+def cucumberVersion = '7.18.1'
+def sparkVersion = '3.5.5'
+def hadoopAwsVersion = '3.3.4'
+def s3MockVersion = '0.2.6'
+def junitVintageVersion = '5.11.0'
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	implementation(group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: awsJavaSdkVersion)
+	implementation(group: 'com.amazonaws', name: 'aws-java-sdk-core', version: awsJavaSdkVersion)
+
+	implementation group: 'org.apache.spark', name: 'spark-core_2.13', version: sparkVersion
+	implementation group: 'org.apache.spark', name: 'spark-sql_2.13', version: sparkVersion
+	implementation(group: 'org.apache.hadoop', name: 'hadoop-aws', version: hadoopAwsVersion)
+	implementation(group: 'org.apache.hadoop', name: 'hadoop-common', version: hadoopAwsVersion){
+		exclude group: 'org.slf4j', module: 'slf4j-reload4j'
+	}
+
+	implementation group: 'io.cucumber', name: 'cucumber-java', version: cucumberVersion
+	testRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-launcher'
+	testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: junitVintageVersion
+	testImplementation group: 'io.cucumber', name: 'cucumber-java', version: cucumberVersion
+	testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: cucumberVersion
+	testImplementation group: 'io.cucumber', name: 'cucumber-spring', version: cucumberVersion
+	testImplementation group: 'io.findify', name: 's3mock_2.13', version: s3MockVersion
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
 
+test {
+	jvmArgs '--add-exports', 'java.base/sun.nio.ch=ALL-UNNAMED'
+}
 jacoco {
 	toolVersion = "0.8.7"
 }
